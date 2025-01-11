@@ -7,34 +7,21 @@ Número de dias no mês em que o valor de faturamento diário foi superior à m�
 
 function calculaFaturamento (dados) {
 
-  let menorFaturamento = 0, maiorFaturamento = 0
   let mediaArray = []
 
   for (elemento of dados) {
-
     if(elemento.valor == 0) continue
-
     mediaArray.push(elemento.valor)
-
-    if(menorFaturamento == 0 && maiorFaturamento == 0 ) {
-      menorFaturamento = elemento.valor
-      maiorFaturamento = elemento.valor
-      continue
-    }
-
-    if(elemento.valor > maiorFaturamento) {
-      maiorFaturamento = elemento.valor
-      continue
-    }
-
-    if(elemento.valor < menorFaturamento) menorFaturamento = elemento.valor
   }
 
+  let menorFaturamento = Math.min(...mediaArray)
+  let maiorFaturamento = Math.max(...mediaArray)
   let media  = (mediaArray.reduce((soma, valorAtual) => soma + valorAtual))/mediaArray.length
   let  diasMaiorFaturamento = mediaArray.filter((valor) => valor > media)
 
   console.log(
-    `O maior faturamento em um dia do mês foi: ${maiorFaturamento}
+    `
+    O maior faturamento em um dia do mês foi: ${maiorFaturamento}
     O menor faturamento em um dia do mês foi: ${menorFaturamento}
     Dias em que o faturamento superou a média mensal: ${diasMaiorFaturamento.length}
     `)
