@@ -37,6 +37,7 @@ function calculaFaturamento (dados) {
       percentual: `${(((estado.faturamento)/total)*100).toFixed(2)} %`
     })
   }
+  
 
   console.log(ArrayPercentual)
 } 
